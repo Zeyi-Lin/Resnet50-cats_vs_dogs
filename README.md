@@ -37,7 +37,7 @@ pip install torch>=1.12.0 torchvision>=0.13.0 swanlab>=0.1.2 gradio
 
 ## 1.2 创建文件目录
 
-现在打开1个文件夹，新建下面这5个文件： ![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0e662388e79d4499a1938a49772a72e0~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=568\&h=122\&s=29434\&e=png\&b=222120)
+现在打开1个文件夹，新建下面这5个文件： ![在这里插入图片描述](readme_files/1.png)
 
 它们各自的作用分别是：
 
@@ -54,9 +54,9 @@ pip install torch>=1.12.0 torchvision>=0.13.0 swanlab>=0.1.2 gradio
 
 > 百度网盘：链接: <https://pan.baidu.com/s/1qYa13SxFM0AirzDyFMy0mQ> 提取码: 1ybm
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8dcc069427fa44cc89834e1f72849f17~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1234\&h=620\&s=459710\&e=png\&b=262625)
+![在这里插入图片描述](readme_files/2.png)
 将数据集放入`datasets`文件夹：
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aaf82fa13d724d9b89dc09f14107a603~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=712\&h=218\&s=33751\&e=png\&b=282726)
+![在这里插入图片描述](readme_files/3.png)
 
 ok，现在我们开始训练部分！
 
@@ -71,8 +71,10 @@ ps：如果想直接看完整代码和效果，可直接跳转到第2.9。
 我们首先需要创建1个类`DatasetLoader`，它的作用是完成数据集的读取和预处理，我们将它写在`load_datasets.py`中。
 在写这个类之前，先分析一下数据集。
 在datasets目录下，`train.csv`和`val.csv`分别记录了训练集和测试集的图像相对路径（第一列是图像的相对路径，第二列是标签，0代表猫，1代表狗）：
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/984ceb9f937a4070b5801bfb634d2e4c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=569\&h=113\&s=27536\&e=png\&b=232221)
-![左图作为train.csv，右图为train文件夹中的cat文件夹中的图像](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/319a628f04644ea1904d341121b4ad53~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1770\&h=552\&s=643055\&e=png\&b=2a2726)
+![在这里插入图片描述](readme_files/4.png)
+
+![左图作为train.csv，右图为train文件夹中的cat文件夹中的图像](readme_files/5.png)
+
 左图作为train.csv，右图为train文件夹中的cat文件夹中的图像。
 
 那么我们的目标就很明确：
@@ -230,7 +232,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 在训练中我们使用`swanlab`库作为实验管理与指标可视化工具。
 [swanlab](https://github.com/SwanHubX/SwanLab)是一个类似Tensorboard的开源训练图表可视化库，有着更轻量的体积与更友好的API，除了能记录指标，还能自动记录训练的logging、硬件环境、Python环境、训练时间等信息。
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/143c870f6e4e40338634d7ed2d323c98~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=811\&h=273\&s=268539\&e=png\&b=f9f9fd)
+![在这里插入图片描述](readme_files/6.gif)
 
 ### 设置初始化配置参数
 
@@ -437,24 +439,24 @@ if __name__ == "__main__":
 
 ## 2.10 开始训练！
 
-运行`train.py`：    ![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b364854b30284b5092b26dad3ca8653a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1011\&h=202\&s=73631\&e=png\&b=1e2022)
+运行`train.py`：    ![在这里插入图片描述](readme_files/7.png)
 
 此时我们打开终端，输入`swanlab watch`开启SwanLab实验看板：
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ab4dab57f1d24f42883e5556d4168a29~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=694\&h=107\&s=22605\&e=png\&b=1e2022)
+![在这里插入图片描述](readme_files/8.png)
 
 点开http:127.0.0.1:5092，将在浏览器中看到实验看板。
 
 默认页面是Project DashBoard，包含了项目信息和一个对比实验表格：
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cd813f7036bd4cf5a6e6db653db65190~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1757\&h=450\&s=105819\&e=png\&b=ffffff)
+![在这里插入图片描述](readme_files/9.png)
 我们点开1个进行中的实验，会看到`train_loss`和`test_acc`整体的变化曲线：
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/88b20ff598614a3f8a2237e867008595~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1692\&h=575\&s=68031\&e=png\&b=fefefe)
+![在这里插入图片描述](readme_files/10.png)
 
 切换到**OverView标签页**，这里记录了实验的各种信息，包括**swanlab.init**中的参数、最终的实验指标、实验状态、训练时长、Git仓库链接、主机名、操作系统、Python版本、硬件配置等等。
 
 **可以看到训练完成的模型在测试集上的准确率是100%。**
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc07e1feffcc41709443aacc3ba2e1f5~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1429\&h=864\&s=108089\&e=png\&b=fefefe)
+![在这里插入图片描述](readme_files/11.png)
 至此我们完成了模型的训练和测试，得到了1个表现非常棒的猫狗分类模型，权重保存在了checkpoint目录下。
 
 接下来，我们就基于训练好的权重，创建1个Demo网页吧～
@@ -537,17 +539,17 @@ if __name__ == "__main__":
 
 运行程序后，会出现以下输出：
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3827e2e429134a7f9c277d5f0cc46b57~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=489\&h=100\&s=14867\&e=png\&b=1f2123)
+![在这里插入图片描述](readme_files/12.png)
 
 点开链接，出现猫狗分类的Demo网页：
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b92011ec93144c9e9db7ee9640485280~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1090\&h=407\&s=53781\&e=png\&b=131b27)
+![在这里插入图片描述](readme_files/13.png)
 
 用猫和狗的图片试试：
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f983c2a1c4004182a707c6617e8776e9~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1118\&h=425\&s=153231\&e=png\&b=121925)
+![在这里插入图片描述](readme_files/14.png)
 
-![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c7f51dbf5f6141ec8809490dd2855561~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1112\&h=443\&s=200561\&e=png\&b=101622)
+![在这里插入图片描述](readme_files/15.png)
 
 效果很完美！
 
