@@ -1,0 +1,4 @@
+torch>=1.12.0
+torchvision>=0.13.0
+swanlab>=0.1.2
+gradio
