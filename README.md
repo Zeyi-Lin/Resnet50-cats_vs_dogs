@@ -57,6 +57,7 @@ pip install torch>=1.12.0 torchvision>=0.13.0 swanlab>=0.1.2 gradio
 ![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8dcc069427fa44cc89834e1f72849f17~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1234\&h=620\&s=459710\&e=png\&b=262625)
 将数据集放入`datasets`文件夹：
 ![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aaf82fa13d724d9b89dc09f14107a603~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=712\&h=218\&s=33751\&e=png\&b=282726)
+
 ok，现在我们开始训练部分！
 
 > ps：如果你想要用更大规模的数据来训练猫狗分类模型，请前往文末的相关链接。
@@ -432,11 +433,16 @@ if __name__ == "__main__":
     print("Training complete")
 ```
 
+
+
 ## 2.10 开始训练！
 
 运行`train.py`：    ![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b364854b30284b5092b26dad3ca8653a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1011\&h=202\&s=73631\&e=png\&b=1e2022)
+
 此时我们打开终端，输入`swanlab watch`开启SwanLab实验看板：
+
 ![在这里插入图片描述](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ab4dab57f1d24f42883e5556d4168a29~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=694\&h=107\&s=22605\&e=png\&b=1e2022)
+
 点开http:127.0.0.1:5092，将在浏览器中看到实验看板。
 
 默认页面是Project DashBoard，包含了项目信息和一个对比实验表格：
