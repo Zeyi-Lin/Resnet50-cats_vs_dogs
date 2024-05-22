@@ -1,19 +1,23 @@
 # Resnet50-cats_vs_dogs
 
 [![zhihu](https://img.shields.io/badge/知乎-zhihu-blue)](https://zhuanlan.zhihu.com/p/676430630)
+![swanlab](https://img.shields.io/badge/猫狗分类-SwanLab-438440)
 
 猫狗分类是计算机视觉最基础的任务之一——如果说完成MNIST手写体识别是实现CV的“Hello World”，那猫狗分类就是旅程的下一站～。
 
-这篇文章我将带大家使用PyTorch、SwanLab、Gradio三个开源工具，完成从**数据集准备、代码编写、可视化训练到构建Demo网页**的全过程。
+这篇文章我将带大家使用SwanLab、PyTorch、Gradio三个开源工具，完成从**数据集准备、代码编写、可视化训练**到**构建Demo网页**的全过程。
 
+> 🔥 实验过程可看这个网页：[![swanlab](https://img.shields.io/badge/猫狗分类-SwanLab-438440)](https://github.com/swanhubx/swanlab)  
 > 代码：[Github](https://github.com/xiaolin199912/Resnet50-cats_vs_dogs)
-> 
-> 在线Demo: [SwanHub](https://swanhub.co/ZeYiLin/Resnet50-cats_vs_dogs/demo)
-> 
-> 数据集：[百度云](https://pan.baidu.com/s/1qYa13SxFM0AirzDyFMy0mQ) 提取码: 1ybm
-> 
-> 三个开源库：[pytorch](https://github.com/pytorch/pytorch)、[SwanLab](https://github.com/SwanHubX/SwanLab)、[Gradio](https://github.com/gradio-app/gradio)
+> 在线Demo：[SwanHub](https://swanhub.co/ZeYiLin/Resnet50-cats_vs_dogs/demo)、[HuggingFace](https://huggingface.co/spaces/TheEeeeLin/Resnet50-cats_vs_dogs)  
+> 数据集：[百度云](https://pan.baidu.com/s/1qYa13SxFM0AirzDyFMy0mQ) 提取码: 1ybm  
+> 三个开源库：[SwanLab](https://github.com/SwanHubX/SwanLab)、[Pytorch](https://github.com/pytorch/pytorch)、[Gradio](https://github.com/gradio-app/gradio)
 
+
+- 🔥2024/5/1更新：补充swanlab云端版内容。
+- 🔥2024/3/17更新：增加swanlab上传图像的代码。
+
+![](readme_files/1.png)
 
 
 # 1. 准备部分
@@ -54,9 +58,11 @@ pip install torch>=1.12.0 torchvision>=0.13.0 swanlab>=0.3.3 gradio
 
 > 百度网盘：链接: <https://pan.baidu.com/s/1qYa13SxFM0AirzDyFMy0mQ> 提取码: 1ybm
 
-![在这里插入图片描述](readme_files/2.png)
+![alt text](/readme_files/2.png)
+
 将数据集放入`datasets`文件夹：
-![在这里插入图片描述](readme_files/3.png)
+
+![alt text](/readme_files/3.png)
 
 ok，现在我们开始训练部分！
 
@@ -64,16 +70,17 @@ ok，现在我们开始训练部分！
 
 # 2. 训练部分
 
-ps：如果想直接看完整代码和效果，可直接跳转到第2.9。
+ps：如果想直接看完整代码和效果，可直接跳转到第**2.9**。
 
 ## 2.1 load_datasets.py
 
 我们首先需要创建1个类`DatasetLoader`，它的作用是完成数据集的读取和预处理，我们将它写在`load_datasets.py`中。
 在写这个类之前，先分析一下数据集。
 在datasets目录下，`train.csv`和`val.csv`分别记录了训练集和测试集的图像相对路径（第一列是图像的相对路径，第二列是标签，0代表猫，1代表狗）：
-![在这里插入图片描述](readme_files/4.png)
 
-![左图作为train.csv，右图为train文件夹中的cat文件夹中的图像](readme_files/5.png)
+![alt text](/readme_files/image.png)
+
+![alt text](/readme_files/image-1.png)
 
 左图作为train.csv，右图为train文件夹中的cat文件夹中的图像。
 
@@ -232,7 +239,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 在训练中我们使用`swanlab`库作为实验管理与指标可视化工具。
 [swanlab](https://github.com/SwanHubX/SwanLab)是一个类似Tensorboard的开源训练图表可视化库，有着更轻量的体积与更友好的API，除了能记录指标，还能自动记录训练的logging、硬件环境、Python环境、训练时间等信息。
 
-![在这里插入图片描述](readme_files/6.gif)
+![alt text](/readme_files/image-2.png)
 
 ### 设置初始化配置参数
 
@@ -439,27 +446,41 @@ if __name__ == "__main__":
 
 ## 2.10 开始训练！
 
-运行`train.py`：    ![在这里插入图片描述](readme_files/7.png)
+🔥实验过程可看这个网页：[猫狗分类｜SwanLab](https://swanlab.cn/@ZeyiLin/Cats_Dogs_Classification/runs/jzo93k112f15pmx14vtxf/chart)
 
-此时我们打开终端，输入`swanlab watch`开启SwanLab实验看板：
+如果你第一次使用SwanLab，你需要先登录账号，在终端输入：
+```bash
+swanlab login
+```
 
-![在这里插入图片描述](readme_files/8.png)
+会让你填一个API Key，去[SwanLab官网](https://swanlab.cn)登录一下账号，在设置页面复制API Key，粘贴过来就可以：
 
-点开http:127.0.0.1:5092，将在浏览器中看到实验看板。
+![alt text](/readme_files/image-3.png)
 
-默认页面是Project DashBoard，包含了项目信息和一个对比实验表格：
-![在这里插入图片描述](readme_files/9.png)
-我们点开1个进行中的实验，会看到`train_loss`和`test_acc`整体的变化曲线：
-![在这里插入图片描述](readme_files/10.png)
+然后，我们运行train.py： 
 
-切换到**OverView标签页**，这里记录了实验的各种信息，包括**swanlab.init**中的参数、最终的实验指标、实验状态、训练时长、Git仓库链接、主机名、操作系统、Python版本、硬件配置等等。
+![alt text](/readme_files/image-4.png)
 
-**可以看到训练完成的模型在测试集上的准确率是100%。**
+这时候你会在看到在开头会给到你两个链接，我们点击第一个，里面包含了这个项目的信息和一个对比实验表格：
 
-![在这里插入图片描述](readme_files/11.png)
-至此我们完成了模型的训练和测试，得到了1个表现非常棒的猫狗分类模型，权重保存在了checkpoint目录下。
+![alt text](/readme_files/image-5.png)
+
+我们点开1个进行中的实验，会看到train_loss和test_acc整体的变化曲线，以及我们测试集里的图像和它们对应的预测标签： 
+
+![alt text](/readme_files/image-6.png)
+
+切换到实验卡片，这里记录了实验的各种信息，包括超参数、最终的实验指标、实验状态、训练时长、Git仓库链接、主机名、操作系统、Python版本、硬件配置等等。
+
+![alt text](/readme_files/image-7.png)
+
+可以看到模型在中已经达到了100%的测试准确率，但是在最后反而拉了——这可能因为过拟合、也可能是常规的波动，就看后续如何优化啦～
+
+![alt text](/readme_files/image-8.png)
+
+至此我们完成了模型的训练和测试，得到了1个表现非常棒的猫狗分类模型，权重保存在了checkpoint目录下。 
 
 接下来，我们就基于训练好的权重，创建1个Demo网页吧～
+
 
 # 3. Gradio演示程序
 
@@ -539,29 +560,20 @@ if __name__ == "__main__":
 
 运行程序后，会出现以下输出：
 
-![在这里插入图片描述](readme_files/12.png)
+![alt text](/readme_files/image-9.png)
 
 点开链接，出现猫狗分类的Demo网页：
 
-![在这里插入图片描述](readme_files/13.png)
+![alt text](/readme_files/image-10.png)
 
 用猫和狗的图片试试：
 
-![在这里插入图片描述](readme_files/14.png)
+![alt text](/readme_files/image-11.png)
 
-![在这里插入图片描述](readme_files/15.png)
+![alt text](/readme_files/image-12.png)
 
 效果很完美！
 
 至此，我们完成了用PyTorch、SwanLab、Gradio三个开源工具训练1个猫狗分类模型的全部过程，更多想了解的可以参考相关链接或评论此文章。
 
 如果有帮助，请Star吧～
-
-# 4. 相关链接
-
-*   SwanLab：<https://github.com/SwanHubX/SwanLab>
-*   猫狗分类代码：<https://github.com/xiaolin199912/Resnet50-cats_vs_dogs>
-*   在线Demo：https://swanhub.co/ZeYiLin/Resnet50-cats_vs_dogs/demo
-*   猫狗分类数据集（300张图像）：<https://modelscope.cn/datasets/tany0699/cats_and_dogs/summary>
-    *   百度云下载：链接: <https://pan.baidu.com/s/1qYa13SxFM0AirzDyFMy0mQ> 提取码: 1ybm
-*   猫狗分类数据集（10k张图像）：<https://modelscope.cn/datasets/XCsunny/cat_vs_dog_class/summary>
