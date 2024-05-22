@@ -68,8 +68,11 @@ if __name__ == "__main__":
 
     # 初始化swanlab
     swanlab.init(
+        # 设置项目、实验名和实验介绍
+        project="Cats_Dogs_Classification",
         experiment_name="ResNet50",
-        description="Train ResNet50 for cat and dog classification.",
+        description="用ResNet50训练猫狗分类任务",
+        # 记录超参数
         config={
             "model": "resnet50",
             "optim": "Adam",
@@ -79,7 +82,6 @@ if __name__ == "__main__":
             "num_class": num_classes,
             "device": device,
         },
-        logdir="./logs",
     )
 
     TrainDataset = DatasetLoader("datasets/train.csv")

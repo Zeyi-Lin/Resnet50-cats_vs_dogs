@@ -25,14 +25,14 @@
 ```bash
 torch>=1.12.0
 torchvision>=0.13.0
-swanlab>=0.1.2
+swanlab>=0.3.3
 gradio
 ```
 
 安装命令：
 
 ```bash
-pip install torch>=1.12.0 torchvision>=0.13.0 swanlab>=0.1.2 gradio
+pip install torch>=1.12.0 torchvision>=0.13.0 swanlab>=0.3.3 gradio
 ```
 
 ## 1.2 创建文件目录
