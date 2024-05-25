@@ -1,7 +1,7 @@
 # Resnet50-cats_vs_dogs
 
 [![zhihu](https://img.shields.io/badge/知乎-zhihu-blue)](https://zhuanlan.zhihu.com/p/676430630)
-![swanlab](https://img.shields.io/badge/猫狗分类-SwanLab-438440)
+[![swanlab](https://img.shields.io/badge/猫狗分类-SwanLab-438440)](https://swanlab.cn/@ZeyiLin/Cats_Dogs_Classification/runs/jzo93k112f15pmx14vtxf/chart)
 
 猫狗分类是计算机视觉最基础的任务之一——如果说完成MNIST手写体识别是实现CV的“Hello World”，那猫狗分类就是旅程的下一站～。
 
