@@ -542,7 +542,7 @@ def predict(image):
 
 
 # 定义到您的模型权重的路径
-checkpoint_path = 'checkpoint/lastest_checkpoint.pth'
+checkpoint_path = 'checkpoint/latest_checkpoint.pth'
 num_classes = 2
 model = load_model(checkpoint_path, num_classes)
 
